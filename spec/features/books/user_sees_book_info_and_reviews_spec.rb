@@ -12,7 +12,9 @@ describe 'User visits book show page' do
   describe 'they see the books info' do
     it 'should show them the books title' do
       book = Book.create!(title: 'Walking in the Woods')
-
+      user = User.create!(name: 'John Smith')
+      book.reviews.create!(body: 'A', rating: 5, user: user)
+      
       visit book_path(book)
 
       expect(page).to have_content(book.title)

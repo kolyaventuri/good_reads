@@ -1,7 +1,17 @@
 <h1><%= @book.title %></h1>
 <h2>Average Rating: <%= @book.average_rating %></h2>
-<h3>Highest Rating: <%= @book.highest_rating %></h3>
-<h3>Lowest Rating: <%= @book.lowest_rating %></h3>
+<ul class="high_low">
+  <li id="highest_rating">
+    <h3>Highest Rating: <%= @book.highest_rating.rating %></h3>
+    <h5><%= @book.highest_rating.user.name %></h5>
+    <p><%= @book.highest_rating.body %></p>
+  </li>
+  <li id="lowest_rating">
+    <h3>Lowest Rating: <%= @book.lowest_rating.rating %></h3>
+    <h5><%= @book.lowest_rating.user.name %></h5>
+    <p><%= @book.lowest_rating.body %></p>
+  </li>
+</ul>
 
 <ul class="reviews">
   <%= @book.reviews.find_each do |review| %>
