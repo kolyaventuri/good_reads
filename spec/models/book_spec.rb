@@ -33,8 +33,8 @@ describe Book, type: :model do
     end
 
     it 'should be able to get the highest/lowest rating' do
-      expect(Book.first.highest_rating).to be(5)
-      expect(Book.first.lowest_rating).to be(1)
+      expect(Book.first.highest_rating.rating).to be(5)
+      expect(Book.first.lowest_rating.rating).to be(1)
     end
   end
 end

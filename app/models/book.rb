@@ -9,10 +9,12 @@ class Book < ApplicationRecord
   end
 
   def highest_rating
-    reviews.maximum(:rating)
+    rating = reviews.maximum(:rating)
+    reviews.where(rating: rating).order('id DESC').first
   end
 
   def lowest_rating
-    reviews.minimum(:rating)
+    rating = reviews.minimum(:rating)
+    reviews.where(rating: rating).order('id DESC').first
   end
 end
