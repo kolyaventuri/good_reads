@@ -10,19 +10,21 @@ describe 'User visits book show page' do
   end
 
   describe 'they see the books info' do
-    book = Book.create!(title: 'Walking in the Woods')
-    user = User.create!(name: 'John Smith')
-    user2 = User.create!(name: 'Billy The Kid')
-    review1 = book.reviews.create!(rating: 5, body: 'Enjoyable!', user: user)
-    review2 = book.reviews.create!(rating: 1, body: 'Not enough gun fights.', user: user2)
-
     it 'should show them the books title' do
+      book = Book.create!(title: 'Walking in the Woods')
+
       visit book_path(book)
 
       expect(page).to have_content(book.title)
     end
 
     it 'should show them the reviews' do
+      book = Book.create!(title: 'Walking in the Woods')
+      user = User.create!(name: 'John Smith')
+      user2 = User.create!(name: 'Billy The Kid')
+      review1 = book.reviews.create!(rating: 5, body: 'Enjoyable!', user: user)
+      review2 = book.reviews.create!(rating: 1, body: 'Not enough gun fights.', user: user2)
+
       visit book_path(book)
 
       within('.reviews') do
