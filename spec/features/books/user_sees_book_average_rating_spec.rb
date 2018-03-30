@@ -19,6 +19,6 @@ describe 'User visits the book show page' do
   it 'should display the average rating for the book' do
     visit book_path(Book.first)
 
-    expect(page).to have_content(3.5)
+    expect(page).to have_content("Average Rating: #{Book.first.average_rating}")
   end
 end
