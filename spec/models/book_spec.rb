@@ -18,7 +18,7 @@ describe Book, type: :model do
   end
 
   describe 'methods' do
-    it 'should be able to calculate average rating' do
+    before(:all) do
       book = Book.create!(title: 'Walking in the Woods')
       user = User.create!(name: 'John Smith')
       user2 = User.create!(name: 'Billy The Kid')
@@ -26,8 +26,15 @@ describe Book, type: :model do
       book.reviews.create!(rating: 4, body: 'Enjoyable!', user: user)
       book.reviews.create!(rating: 1, body: 'Not enough gun fights.', user: user2)
       book.reviews.create!(rating: 4, body: 'Not enough gun fights.', user: user2)
+    end
 
-      expect(book.average_rating).to be(3.5)
+    it 'should be able to calculate average rating' do
+      expect(Book.first.average_rating).to be(3.5)
+    end
+
+    it 'should be able to get the highest/lowest rating' do
+      expect(Book.first.highest_rating).to be(5)
+      expect(Book.first.lowests_rating).to be(1)
     end
   end
 end
