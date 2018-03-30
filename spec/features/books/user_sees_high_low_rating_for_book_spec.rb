@@ -9,7 +9,7 @@ describe 'User visits the book show page' do
     DatabaseCleaner.clean
   end
 
-  it 'should display the highest rating' do
+  it 'should display the highest and lowest ratings' do
     book = Book.create!(title: 'Walking in the Woods')
     user = User.create!(name: 'John Smith')
     user2 = User.create!(name: 'Billy The Kid')
