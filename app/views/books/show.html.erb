@@ -1,1 +1,11 @@
 <h1><%= @book.title %></h1>
+
+<ul class="reviews">
+  <%= @book.reviews.find_each do |review| %>
+    <li id="review_<%= review.id %>">
+      <h3><%= review.user.name %></h3>
+      <h5><%= review.rating %></h5>
+      <p><%= review.body %></p>
+    </li>
+  <% end %>
+</ul>
